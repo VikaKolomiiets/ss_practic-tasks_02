@@ -38,4 +38,26 @@ public class Task04Tests {
         }
 
     }
+
+    @Test
+    public void testUtilsSecond(){
+        List<Employee> originList = new ArrayList();
+        originList.add(new Employee("Ivan", 10, new BigDecimal(3000.0)));
+        originList.add(new Manager("Petro", 9, new BigDecimal(3000.0), 1.5));
+        originList.add(new Employee("Stepan", 8, new BigDecimal(4000.0)));
+        originList.add(new Employee("Andriy", 7, new BigDecimal(3500.0)));
+        originList.add(new Employee("Ihor", 5, new BigDecimal(3500.0)));
+        originList.add(new Manager("Vasyl", 8, new BigDecimal(2000.0), 2.0));
+        List<Employee> expected = new ArrayList();
+        expected.add(new Employee("Stepan", 8, new BigDecimal(4000.0)));
+        expected.add(new Employee("Ivan", 10, new BigDecimal(3000.0)));
+        expected.add(new Manager("Petro", 9, new BigDecimal(3000.0), 1.5));
+
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.addAll(EmployeeMyUtils.largestEmployees(originList));
+        for (Employee worker: employees) {
+            System.out.println(worker.getClass().getName() + " : " +
+                    worker.getName() + " : " + worker.getPayment() + " : " + worker.getExperience());
+        }
+    }
 }

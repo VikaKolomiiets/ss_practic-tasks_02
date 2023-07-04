@@ -26,17 +26,6 @@ public class Manager extends Employee {
     public BigDecimal getPayment() {
         return super.getPayment().multiply(BigDecimal.valueOf(this.getCoefficient()));
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Manager manager = (Manager) o;
-        return this.getExperience() == manager.getExperience()
-                && Objects.equals(this.getName(), manager.getName())
-                && Objects.equals(this.getPayment(), manager.getBasePayment());
-    }
-
 }
 
 //    @Override
