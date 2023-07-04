@@ -55,6 +55,9 @@ public class EmployeeMyUtils {
         {
             throw new NullPointerException();
         }
+        if(workers.size() < 2){
+            return workers;
+        }
         List<Employee> selectedWorkers = new ArrayList<>();
 
         BigDecimal maxManagerPayment = workers.stream().distinct()
