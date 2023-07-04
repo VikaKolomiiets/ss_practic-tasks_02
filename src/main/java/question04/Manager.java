@@ -1,6 +1,7 @@
 package question04;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Manager extends Employee {
     private double coefficient;
@@ -15,11 +16,28 @@ public class Manager extends Employee {
     }
 
     public void setCoefficient(double coefficient) {
-        if (coefficient <= 0){
+        if (coefficient <= 0) {
             throw new IllegalArgumentException("Coefficient should be more than 0");
         }
         this.coefficient = coefficient;
     }
+
+    @Override
+    public BigDecimal getPayment() {
+        return super.getPayment().multiply(BigDecimal.valueOf(this.getCoefficient()));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manager manager = (Manager) o;
+        return this.getExperience() == manager.getExperience()
+                && Objects.equals(this.getName(), manager.getName())
+                && Objects.equals(this.getPayment(), manager.getBasePayment());
+    }
+
+}
 
 //    @Override
 //    public Map<Integer, Double> getPayment() {
@@ -27,9 +45,3 @@ public class Manager extends Employee {
 //        data.put(this.getExperience(),this.getBasePayment().doubleValue() * this.getCoefficient() * this.getExperience());
 //        return data;
 //    }
-
-    @Override
-    public Double getPayment() {
-        return super.getPayment() * this.getCoefficient();
-    }
-}

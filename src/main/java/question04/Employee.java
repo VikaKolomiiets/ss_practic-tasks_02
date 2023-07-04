@@ -17,36 +17,41 @@ public class Employee {
     public String getName() {
         return name;
     }
+
     public int getExperience() {
         return experience;
     }
+
     public BigDecimal getBasePayment() {
         return basePayment;
     }
 
     public void setName(String name) {
-        if(name == null || name.isEmpty()){
+        if (name == null || name.isEmpty()) {
             throw new NullPointerException("Please, check the Name.");
         }
         this.name = name;
     }
+
     public void setExperience(int experience) {
-        if(experience < 0){
+        if (experience < 0) {
             throw new IllegalArgumentException("Experience data cannot be less than zero.");
         }
         this.experience = experience;
     }
+
     public void setBasePayment(BigDecimal basePayment) {
-        if(basePayment == null){
+        if (basePayment == null) {
             throw new NullPointerException("Please, check the basePayment data");
         }
-        if(basePayment.doubleValue() <= 0){
+        if (basePayment.doubleValue() <= 0) {
             throw new IllegalArgumentException("BasePayment should be more than zero");
         }
         this.basePayment = basePayment;
     }
-    public Double getPayment(){
-        return this.getBasePayment().doubleValue() * this.getExperience();
+
+    public BigDecimal getPayment() {
+        return this.getBasePayment().multiply(BigDecimal.valueOf(this.getExperience()));
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return experience == employee.experience && Objects.equals(name, employee.name) && Objects.equals(basePayment, employee.basePayment);
+        return experience == employee.experience && name.equals(employee.name) && basePayment.equals(employee.basePayment);
     }
 
     @Override
