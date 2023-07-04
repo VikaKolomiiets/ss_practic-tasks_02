@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EmployeeMyUtils {
-    public List<Employee> largestEmployees(List<Employee> workers) {
+    public static List<Employee> largestEmployees(List<Employee> workers) {
         List<Employee> selectedWorkers = new ArrayList<>();
 
         Double maxManagerPayment = workers.stream()
