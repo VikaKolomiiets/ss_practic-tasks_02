@@ -1,8 +1,6 @@
 package question04;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Manager extends Employee {
     private double coefficient;
@@ -31,7 +29,7 @@ public class Manager extends Employee {
 //    }
 
     @Override
-    public Double getPaument() {
-        return super.getPaument() * this.getCoefficient();
+    public Double getPayment() {
+        return super.getPayment() * this.getCoefficient();
     }
 }

@@ -1,12 +1,7 @@
 package question04;
 
-import com.sun.jdi.Value;
-
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Employee {
     private String name;
@@ -50,14 +45,26 @@ public class Employee {
         }
         this.basePayment = basePayment;
     }
+    public Double getPayment(){
+        return this.getBasePayment().doubleValue() * this.getExperience();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return experience == employee.experience && Objects.equals(name, employee.name) && Objects.equals(basePayment, employee.basePayment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, experience, basePayment);
+    }
+}
+
 //    public Map<Integer,Double> getPayment(){
 //        Map<Integer,Double> data = new HashMap<>();
 //        data.put(this.getExperience(),this.getBasePayment().doubleValue() * this.getExperience());
 //        return data;
 //    }
-
-    public Double getPaument(){
-        return this.getBasePayment().doubleValue() * this.getExperience();
-    }
-
-}
